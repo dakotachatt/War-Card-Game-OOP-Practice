@@ -6,7 +6,7 @@ class Main {
 		
 		Game game = new Game();
 
-		game.startGame("HP", "Pidge");
+		game.startGame("Fred", "George");
 
   }
 }
