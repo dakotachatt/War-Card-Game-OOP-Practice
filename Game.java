@@ -48,6 +48,17 @@ public class Game {
 		//Logic for multiple rounds - first player to 2 rounds won wins the entire game, max number of rounds possible in one game is 3, will break out of outer loop when a player
 		// gets to 2 rounds won.
 		for(int j = 1; j <= 3; j++) {
+
+			//to create a new shuffled deck for each round (since deck already created for first round, only does this round 2 and on)
+			// Need to refactor this
+			if(j > 1) {
+				deck.createAndShuffleDeck();
+				players[0].setPlayerDeck(0, deck);
+				players[1].setPlayerDeck(26, deck);
+				playerOneDeck = players[0].getPlayerDeck();
+				playerTwoDeck = players[1].getPlayerDeck();
+			}
+
 			if(players[0].getRoundsWon() == 2) {
 				System.out.println();
 				System.out.println(players[0].getName() + " won the game with a total of 2 rounds to " + players[1].getRoundsWon() + "!");
@@ -91,7 +102,8 @@ public class Game {
 					System.out.println(players[1].getName() + " is the winner of the round with a total of " + players[1].getRoundScore() + " points!");
 					players[1].setRoundsWon(players[1].getRoundsWon() + 1);
 				} else {
-					System.out.println("It was a tie!");
+					System.out.println("It was a tie! No-one receives a point for this round.");
+					j--;
 				}
 				players[0].setRoundScore(0);
 				players[1].setRoundScore(0);
@@ -99,7 +111,10 @@ public class Game {
 
 			System.out.println();
 			System.out.println("The current round score is " + players[0].getName() + ": " + players[0].getRoundsWon() + " and " + players[1].getName() + ": " + players[1].getRoundsWon());
+
 		}
+
+		System.out.println("Press ENTER to continue!");
 
 	scanner.close();
 	}
