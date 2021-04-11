@@ -1,2 +1,5 @@
 Change final end of game messaging regarding the winner of the game, currently only a final message appears when someone wins 2-0
+
 Need to fix some formatting regarding the "Press ENTER" to continue lines of code, currently not acting as desired
+
+New deck create block each round works mostly as intended, but when user ties, counter decrements, but this inadvertently bypasses deck shuffle on next round.
